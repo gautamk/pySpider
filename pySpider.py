@@ -2,19 +2,15 @@
 #   Simple Web Crawler
 #   Assumptions
 #       * Urls to crawl are contained only in <a href="URL" >
-#       * All Input to the program is error free
-#       * 
 #
 ###
 
 import urllib2
 from bs4 import BeautifulSoup
-class PySpider:
+class PySpiderRecursive:
 
     def __init__(self):
-        self.crawl_queue=[]
-        self.crawled = []
-        return
+        self.crawled = open("crawled.txt",'w')
 
     def get_url(self,url):
         response = urllib2.urlopen(url)
@@ -26,15 +22,17 @@ class PySpider:
 
     def crawl(self,url):
         print "crawling:" + url
-        links = self.get_all_links(self.get_url(url))
-        self.crawled.insert(0,url)
-        print self.crawled
+        links = self.get_all_links( self.get_url(url) )
+        self.crawled.write(url+"\n")
         for link in links:
             try:
-                self.crawl(link.get("href"))
-            except(ValueError v):
-                print V
+                self.crawl( link.get("href" ) )
+            except ValueError:
+                print "Ignoring="+link.get('href')
+                pass
+    def __del__(self):
+        self.crawled.close()
 
 if __name__ == '__main__':
-    spider = PySpider()
+    spider = PySpiderRecursive()
     spider.crawl("http://gautamk.heroku.com")
