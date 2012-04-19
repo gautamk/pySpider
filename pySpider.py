@@ -45,7 +45,7 @@ class PySpider:
         if not self.is_valid_url(url): return False
         self.enqueue(url)
         link_count = 0
-        while True:
+        while self.repo.__len__() > 0:
             print link_count
             self.__crawl__()
             link_count+=1

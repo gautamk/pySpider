@@ -1,9 +1,9 @@
 [crawled_links]
-http://gautamk.github.com/pySpider/
+http://gautamk.github.com/pySpider/root.html
+http://gautamk.github.com/pySpider/L1P1.html
+http://gautamk.github.com/pySpider/L1P2.html
+http://gautamk.github.com/pySpider/L1P3.html
+http://gautamk.github.com/pySpider/L2P1.html
+http://gautamk.github.com/pySpider/L2P2.html
+http://gautamk.github.com/pySpider/L2P3.html
 [un_crawled_links]
-http://python.org"
-http://twitter.com/#!/michigangraham
-https://github.com/gautamk
-https://github.com/gautamk/pySpider/tarball/master
-https://github.com/gautamk/pySpider/zipball/master
-https://github.com/gautamk/pySpider
