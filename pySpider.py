@@ -16,7 +16,7 @@ class PySpider:
     def __init__(self):
         self.file_name="crawled.txt"
         self.crawled = open(self.file_name,'w')
-        self.crawled.write("[crawled_links]\n")
+        self.crawled.write("[crawled_links]\n\n")
         self.repo = [] # A repository of links
         self.limit = 0 # Limit the number of links visited. 0 means infinite
 
@@ -61,7 +61,7 @@ class PySpider:
             self.enqueue(link.get("href"))
 
     def __del__(self):
-        self.crawled.write("[un_crawled_links]\n")
+        self.crawled.write("\n\n[un_crawled_links]\n\n")
         for link in self.repo:
             self.crawled.write(link+"\n")
         self.crawled.close()
