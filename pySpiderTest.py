@@ -30,6 +30,9 @@ class PySpiderTest(unittest.TestCase):
         self.spider.enqueue(url)
         self.assertEqual(url,self.spider.dequeue())
 
+    def test_crawl:
+        pass
+
 
 
     

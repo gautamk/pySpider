@@ -3,6 +3,7 @@
 #   Assumptions
 #       * Urls to crawl are contained only in <a href="URL" >
 #       * Only absolute URLS are valid, Relative Urls are not allowed
+#       * Not checking for Duplicates because of increased time complexity
 #
 ###
 
@@ -27,11 +28,8 @@ class PySpider:
         return soup.find_all('a')
 
     def is_valid_url(self,url):
-        try:
-            url = urlparse(url)
-        except AttributeError as ae:
-            print ae.__str__()
-            return False
+        if url is None :return False
+        url = urlparse(url)
         if url.scheme   is  ""  or  url.scheme   is None: return False
         if url.hostname is  ""  or  url.hostname is None: return False
         return True
@@ -47,6 +45,7 @@ class PySpider:
         self.enqueue(url)
         link_count = 0
         while True:
+            print link_count
             self.__crawl__()
             link_count+=1
             if link_count >= self.limit and self.limit > 0: break
@@ -66,6 +65,3 @@ class PySpider:
             self.crawled.write(link+"\n")
         self.crawled.close()
 
-if __name__ == '__main__':
-    spider = PySpider()
-    spider.crawl("http://python.org")
