@@ -22,11 +22,11 @@ class PySpider:
 
     def get_url(self,url):
         response = urllib2.urlopen(url)
-        return response.read()
+        return response.read() # The response HTML
 
     def get_all_links(self,html):
         soup = BeautifulSoup(html)
-        return soup.find_all('a')
+        return soup.find_all('a') # An Array of links
 
     def is_valid_url(self,url):
         if url is None :return False
@@ -36,14 +36,16 @@ class PySpider:
         return True
 
     def enqueue(self,url):
-        if self.is_valid_url(url): self.repo.insert(0,url)
+        if self.is_valid_url(url): 
+            self.repo.insert(0,url)
+            return True
+        else: return False
 
     def dequeue(self):
         return self.repo.pop()
 
     def crawl(self,url):
-        if not self.is_valid_url(url): return False
-        self.enqueue(url)
+        if not self.enqueue(url): return False
         link_count = 0
         while self.repo.__len__() > 0:
             print link_count
