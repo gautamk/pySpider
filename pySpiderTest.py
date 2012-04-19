@@ -31,7 +31,7 @@ class PySpiderTest(unittest.TestCase):
         self.assertEqual(url,self.spider.dequeue())
 
     def test_crawl:
-        pass
+        pass#for now 
 
 
 
