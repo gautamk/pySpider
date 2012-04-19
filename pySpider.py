@@ -4,6 +4,7 @@
 #       * Urls to crawl are contained only in <a href="URL" >
 #       * Only absolute URLS are valid, Relative Urls are not allowed
 #       * Not checking for Duplicates because of increased time complexity
+#       * Urls point for HTML documents 
 #
 ###
 
